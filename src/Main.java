@@ -6,8 +6,8 @@ public class Main {
         Book []books = new Book[10];
         ProgrammingBook programmingBook= new ProgrammingBook();
         books[0]= new ProgrammingBook(1,"book1",10000,"TG1","java","framework1");
-        books[1]= new ProgrammingBook(2,"book2",20000,"TG2","java","framework2");
-        books[2]= new ProgrammingBook(3,"book3",30000,"TG3","java","framework3");
+        books[1]= new ProgrammingBook(2,"book2",20000,"TG2","php","framework2");
+        books[2]= new ProgrammingBook(3,"book3",30000,"TG3","c#","framework3");
         books[3]= new ProgrammingBook(4,"book4",40000,"TG4","java","framework4");
         books[4]= new ProgrammingBook(5,"book5",50000,"TG5","java","framework5");
         FictionBook fictionBook= new FictionBook();
@@ -48,33 +48,46 @@ public class Main {
 
                     }break;
                 case 2:
-                    boolean check1= true;
-                    for (int i = 1; i < books.length&& check1; i++) {
-                        check1= false;
-                        for (int j=i+1;j<books.length;j++){
-                            if (books[i] > books[j]){
-                                int temp=books[j];
-                                books[i]=books[j];
-                                books[j]= temp;
-                                check1=true;
-
-                            }
-                        }
-
-                    }
-
-
+//                    boolean check1= true;
+//                    for (int i = 1; i < books.length ; i++) {
+//                        check1= false;
+//                        for (int j=i+1;j<books.length;j++){
+//                            if (books[i] > books[j]){
+//                                int temp=books[j];
+//                                books[i]=books[j];
+//                                books[j]= temp;
+//                                check1=true;
+//
+//                            }
+//                        }
+//
+//                    }
+//
+//
                 case 3:
                     System.out.println("nhap gia sach can tim");
-                    String money= scanner.nextLine();
+                    int money= Integer.parseInt(scanner.nextLine());
+                    String[] arr;
                     int index=0;
                     for (int i = 0; i < books.length; i++) {
-                        if (money.equals(books[i].getPrice()));
-                        System.out.println("Gia sach tim duoc la: "+books[i].toString());
-                        index++;
+                        if (money==(books[i].getPrice())) {
+                            System.out.println("Gia sach tim duoc la: " + books[i]);
+                            index++;
+                            break;
+                        }
                     }
                     if (index==0){
                         System.out.println("Khong co gia sach do.");
+                        break;
+                    }
+                case 4:
+                    System.out.println("Nhap ngon ngu can tim");
+                    String num = scanner.nextLine();
+                    for (Book book :books) {
+                       if (book instanceof ProgrammingBook){
+                           System.out.println(((ProgrammingBook) book).getLanguage());
+                       }
+
                     }
 
             }
