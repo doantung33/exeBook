@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner= new Scanner(System.in);
         Book []books = new Book[10];
+        Book book= new Book();
         ProgrammingBook programmingBook= new ProgrammingBook();
         books[0]= new ProgrammingBook(1,"book1",10000,"TG1","java","framework1");
         books[1]= new ProgrammingBook(2,"book2",20000,"TG2","php","framework2");
@@ -16,7 +17,6 @@ public class Main {
         books[7]= new FictionBook(7,"book6",70000,"TG8","category7");
         books[8]= new FictionBook(8,"book6",80000,"TG9","category8");
         books[9]= new FictionBook(9,"book6",90000,"TG10","category9");
-
         boolean check= false;
         do {
             System.out.println("--Menu--");
@@ -48,22 +48,22 @@ public class Main {
 
                     }break;
                 case 2:
-//                    boolean check1= true;
-//                    for (int i = 1; i < books.length ; i++) {
-//                        check1= false;
-//                        for (int j=i+1;j<books.length;j++){
-//                            if (books[i] > books[j]){
-//                                int temp=books[j];
-//                                books[i]=books[j];
-//                                books[j]= temp;
-//                                check1=true;
-//
-//                            }
-//                        }
-//
-//                    }
-//
-//
+                    int temp;
+                    for (int i = 0; i < books.length-1; i++) {
+                        for (int j = n-1; j >=1 ; j--) {
+                            if (books[j].getPrice()<books[j-1].getPrice()){
+                                temp=books[j].getPrice();
+                                books[j]=books[j-1];
+                                books[j-1].getPrice()=temp;
+                            }
+                        }
+                    }
+                    System.out.println("Sap xep theo tien là: ");
+                    for (int i = 0; i < books.length; i++) {
+                        System.out.println();
+                        
+                    }
+
                 case 3:
                     System.out.println("nhap gia sach can tim");
                     int money= Integer.parseInt(scanner.nextLine());
@@ -81,14 +81,23 @@ public class Main {
                         break;
                     }
                 case 4:
-                    System.out.println("Nhap ngon ngu can tim");
-                    String num = scanner.nextLine();
-                    for (Book book :books) {
-                       if (book instanceof ProgrammingBook){
-                           System.out.println(((ProgrammingBook) book).getLanguage());
-                       }
+                    int price=Integer.parseInt(scanner.nextLine());
+                    int low=0;
+                    int high= books.length-1;
+                    while (high>= low){
+                        int mid= (high+low)/2;
+                        if (price<books[mid].getPrice()){
+                            high = mid-1;
+                        }else if (price==books[mid].getPrice()){
+                           return 
+                        }else{
+                            price= mid+1;
+                        }
 
                     }
+                    System.out.println(" abc "+books[price]);
+                    break;
+
 
             }
 
